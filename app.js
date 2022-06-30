@@ -3,14 +3,12 @@
 //Computer's play 
 function computerPlay() {
     const choice = ['rock', 'paper', 'scissors'];
-    // console.log(choice[Math.floor(Math.random() * choice.length)])
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
 // a single round of rock, paper, scissors
 function playRound(playerSelection, computerSelection) {
     const playerChoice = playerSelection.toLowerCase();
-    console.log(playerChoice, computerSelection);
     if(playerChoice === 'rock') {
         if(computerSelection === 'rock') {
             return `It's ${playerChoice} Vs. ${computerSelection}. Play Again!`;
@@ -47,4 +45,11 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
+
+
+// Pre requisites
+// const playerSelection = prompt(`It's your turn:`);
+const playerSelection = 'rock';
+const computerSelection = computerPlay();
+console.log(playRound(playerSelection, computerSelection));
 
