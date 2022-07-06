@@ -6,6 +6,11 @@ function computerPlay() {
     return choice[Math.floor(Math.random() * choice.length)];
 }
 
+function playerPlay() {
+    const choice = ['rock', 'paper', 'scissors'];
+    return choice[Math.floor(Math.random() * choice.length)];
+}
+
 // a single round of rock, paper, scissors
 function playRound(playerSelection, computerSelection) {
     const playerChoice = playerSelection.toLowerCase();
@@ -46,10 +51,30 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function game() {
+    let playerWinCount = 0;
+    let computerWinCount = 0;
+    let result;
+    let resultList;
+    for(let i = 0; i < 5; i++) {
+        const playerSelection = prompt(`It's your turn:`);
+        const computerSelection = computerPlay();
+        console.log('player: ' + playerSelection + ' computer: ' + computerSelection);
+        result = playRound(playerSelection, computerSelection);
+        resultList = result.split(' ');
+        console.log(result);
+        if(resultList[1] === 'Win!') {
+            playerWinCount++;
+        } else if(resultList[1] === 'Lose!') {
+            computerWinCount++;
+        }
+    }
+    console.log(playerWinCount, computerWinCount);
+    if(playerWinCount > computerWinCount) return 'You Win!';
+    else if(playerWinCount < computerWinCount) return 'You Lose!';
+    else if(playerWinCount === computerWinCount) return `It's a draw, pal!`;
+}
 
 // Pre requisites
-// const playerSelection = prompt(`It's your turn:`);
-const playerSelection = 'rock';
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
+console.log(game());
 
